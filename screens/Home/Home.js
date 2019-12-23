@@ -3,13 +3,14 @@ import { StyleSheet, View, Image, TouchableOpacity } from 'react-native';
 import MicComponent from '../Component/Mic';
 import SwitchButton from '../Component/SwitchButton';
 import { STATUS_MAP, MODE_MAP } from '../constants';
+import Color from '../../Config/color';
 export default class App extends React.Component {
   static navigationOptions = {
     title: 'Welcome to the app!'
   };
   componentDidMount() {}
   state = {
-    status: STATUS_MAP.NOTREADY,
+    status: STATUS_MAP.READY,
     mode: MODE_MAP.TAP
   };
   switchMode = val => {
@@ -64,7 +65,7 @@ const styles = StyleSheet.create({
     paddingTop: 30,
     paddingLeft: 20,
     paddingRight: 20,
-    backgroundColor: '#353535',
+    backgroundColor: Color.nightDark,
     borderBottomLeftRadius: 30,
     borderBottomRightRadius: 30
   },

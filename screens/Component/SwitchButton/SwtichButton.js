@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, Button, Image, TouchableOpacity } from 'react-native';
 import SwitchButton from 'switch-button-react-native';
+import Color from '../../../Config/color';
 export default function SwitchButtons(prop) {
   return (
     <View>
@@ -14,11 +15,11 @@ export default function SwitchButtons(prop) {
         switchBorderRadius={100}
         switchSpeedChange={500}
         switchBorderColor='#d4d4d4'
-        switchBackgroundColor='#fff'
-        btnBorderColor='#F36D36'
-        btnBackgroundColor='#F36D36'
-        fontColor='#333333'
-        activeFontColor='#fff'
+        switchBackgroundColor={Color.white}
+        btnBorderColor={Color.redOrange}
+        btnBackgroundColor={Color.redOrange}
+        fontColor={Color.black}
+        activeFontColor={Color.white}
       />
     </View>
   );

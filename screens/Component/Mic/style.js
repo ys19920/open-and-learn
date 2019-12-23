@@ -1,10 +1,11 @@
 import { StyleSheet } from 'react-native';
+import Color from '../../../Config/color';
 const ReadyStyle = StyleSheet.create({
   container: {
     width: 160,
     height: 160,
     borderRadius: 80,
-    backgroundColor: '#47C8EF',
+    backgroundColor: Color.primary,
     alignItems: 'center',
     justifyContent: 'center'
   },
@@ -30,7 +31,7 @@ const ListeningStyle = StyleSheet.create({
     justifyContent: 'center'
   },
   title: {
-    color: '#EC6055',
+    color: Color.pink,
     textAlign: 'center'
   },
   circle: {
@@ -46,7 +47,7 @@ const NotReadyStyle = StyleSheet.create({
     width: 160,
     height: 160,
     borderRadius: 80,
-    backgroundColor: '#A2A2A2',
+    backgroundColor: Color.dark,
     alignItems: 'center',
     justifyContent: 'center'
   },
@@ -68,7 +69,7 @@ const ThinkingStyle = StyleSheet.create({
     width: 160,
     height: 160,
     borderRadius: 80,
-    backgroundColor: '#EC6055',
+    backgroundColor: Color.pink,
     alignItems: 'center'
   },
   circle: {
@@ -94,7 +95,7 @@ const SpeakingStyle = StyleSheet.create({
     width: 160,
     height: 160,
     borderRadius: 80,
-    backgroundColor: '#47C8EF',
+    backgroundColor: Color.primary,
     alignItems: 'center'
   },
   circle: {

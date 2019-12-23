@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 import { WebView } from 'react-native-webview';
 import { render } from 'react-dom';
+import Color from '../../Config/color';
 
 const AmazonUri = 'https://m.media-amazon.com/images/G/01/lwa/btnLWA_gold_195x46._CB487591031_.png';
 // const client_id = 'amzn1.application-oa2-client.3cebc4cf3a0f435fb81269b98d719ab8';
@@ -72,7 +73,7 @@ export default class LoginPage extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#353535',
+    backgroundColor: Color.nightDark,
     height: '100%',
     width: '100%',
     flex: 3
@@ -95,6 +96,6 @@ const styles = StyleSheet.create({
   text: {
     // fontFamily: 'Mazzard M',
     fontSize: 50,
-    color: '#ffffff'
+    color: 'white'
   }
 });
