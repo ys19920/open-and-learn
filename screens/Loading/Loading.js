@@ -3,21 +3,18 @@ import { Image, AsyncStorage, View, StyleSheet, Text } from 'react-native';
 
 class LoadingScreen extends React.Component {
   async componentDidMount() {
-    setTimeout(this._bootstrapAsync, 3000);
+    // setTimeout(this._bootstrapAsync, 3000);
   }
-
-  _bootstrapAsync = async () => {
-    const { navigation } = this.props;
-    // const token = await AsyncStorage.getItem('token');
-    // navigation.navigate(token ? 'App' : 'Auth');
-    navigation.navigate('Auth');
-  };
 
   render() {
     return (
       <View style={styles.container}>
         <Text style={styles.text}>Open & Learn</Text>
-        <Image source={require('../../assets/img/loading.gif')} />
+        <Image
+          source={require('../../assets/img/loading.gif')}
+          onLoad={this.props.Ready}
+          fadeDuration={10}
+        />
       </View>
     );
   }

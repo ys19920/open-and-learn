@@ -1,11 +1,13 @@
 import React from 'react';
-// import { Platform } from 'react-native';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createSwitchNavigator, createAppContainer } from 'react-navigation';
 
 import LoadingScreen from '../screens/Loading';
 import AuthScreen from '../screens/Auth';
 import HomeScreen from '../screens/Home';
+import ReportScreen from '../screens/Report';
+import SettingScreen from '../screens/Settings';
+
 const AuthStack = createStackNavigator(
   {
     Auth: AuthScreen
@@ -18,7 +20,9 @@ const AuthStack = createStackNavigator(
 
 const AppStack = createStackNavigator(
   {
-    App: HomeScreen
+    App: HomeScreen,
+    Report: ReportScreen,
+    Setting: SettingScreen
   },
   {
     initialRouteName: 'App',
@@ -27,12 +31,12 @@ const AppStack = createStackNavigator(
 );
 const PrimaryNav = createSwitchNavigator(
   {
-    Loading: LoadingScreen,
+    // Loading: LoadingScreen,
     Auth: AuthStack,
     App: AppStack
   },
   {
-    initialRouteName: 'Loading'
+    initialRouteName: 'Auth'
   }
 );
 

@@ -21,7 +21,12 @@ export default class LoginPage extends React.Component {
   static navigationOptions = {
     title: 'Welcome to the Auth Screen!'
   };
-  componentDidMount() {}
+  componentDidMount() {
+    const { navigation } = this.props;
+    // const token = await AsyncStorage.getItem('token');
+    // navigation.navigate(token ? 'App' : 'Auth');
+    navigation.navigate('App');
+  }
   gotoApp = async () => {
     const { navigation } = this.props;
     const token = await AsyncStorage.setItem('token');

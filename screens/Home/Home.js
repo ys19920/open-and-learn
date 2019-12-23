@@ -16,10 +16,12 @@ export default class App extends React.Component {
     this.setState({ mode: val === 1 ? MODE_MAP.TAP : MODE_MAP.HANDSFREE });
   };
   settings = () => {
-    console.log('settings');
+    const { navigation } = this.props;
+    navigation.navigate('Setting');
   };
   progress = () => {
-    console.log('progress');
+    const { navigation } = this.props;
+    navigation.navigate('Report');
   };
   render() {
     const { status, mode } = this.state;
@@ -62,8 +64,6 @@ const styles = StyleSheet.create({
     paddingTop: 30,
     paddingLeft: 20,
     paddingRight: 20,
-    // alignItems: 'center',
-    // justifyContent: 'center',
     backgroundColor: '#353535',
     borderBottomLeftRadius: 30,
     borderBottomRightRadius: 30
