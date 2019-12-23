@@ -1,0 +1,84 @@
+import React from 'react';
+import { StyleSheet, View, Image, TouchableOpacity } from 'react-native';
+import MicComponent from '../Component/Mic';
+import SwitchButton from '../Component/SwitchButton';
+import { STATUS_MAP, MODE_MAP } from '../constants';
+export default class App extends React.Component {
+  static navigationOptions = {
+    title: 'Welcome to the app!'
+  };
+  componentDidMount() {}
+  state = {
+    status: STATUS_MAP.NOTREADY,
+    mode: MODE_MAP.TAP
+  };
+  switchMode = val => {
+    this.setState({ mode: val === 1 ? MODE_MAP.TAP : MODE_MAP.HANDSFREE });
+  };
+  settings = () => {
+    console.log('settings');
+  };
+  progress = () => {
+    console.log('progress');
+  };
+  render() {
+    const { status, mode } = this.state;
+    return (
+      <View style={styles.container}>
+        <View style={styles.displayArea}>
+          <View style={{ flexDirection: 'row' }}>
+            <View style={{ flex: 1 }}>
+              <TouchableOpacity onPress={this.settings} style={styles.settings}>
+                <Image source={require('../../assets/img/settings.png')}></Image>
+              </TouchableOpacity>
+            </View>
+            <View style={{ alignItems: 'flex-end', flex: 7 }}>
+              <TouchableOpacity style={styles.progress} onPress={this.progress}>
+                <Image source={require('../../assets/img/progress.png')}></Image>
+              </TouchableOpacity>
+            </View>
+          </View>
+        </View>
+        <View style={styles.buttonArea}>
+          <View style={{ marginBottom: 5 }}>
+            <SwitchButton mode={mode} switchMode={this.switchMode} />
+          </View>
+          <MicComponent status={status} />
+        </View>
+      </View>
+    );
+  }
+}
+
+const styles = StyleSheet.create({
+  container: {
+    height: '100%',
+    width: '100%',
+    backgroundColor: '#D8D8D8',
+    flex: 3
+  },
+  displayArea: {
+    flex: 2,
+    paddingTop: 30,
+    paddingLeft: 20,
+    paddingRight: 20,
+    // alignItems: 'center',
+    // justifyContent: 'center',
+    backgroundColor: '#353535',
+    borderBottomLeftRadius: 30,
+    borderBottomRightRadius: 30
+  },
+  buttonArea: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    fontSize: 19
+  },
+  text: {
+    // fontFamily: 'Mazzard M',
+    fontSize: 50,
+    color: '#ffffff'
+  },
+  settings: { textAlign: 'left' },
+  progress: {}
+});
