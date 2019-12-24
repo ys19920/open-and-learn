@@ -9,7 +9,6 @@ import {
   AsyncStorage
 } from 'react-native';
 import { WebView } from 'react-native-webview';
-import { render } from 'react-dom';
 import Color from '../../Config/color';
 
 const AmazonUri = 'https://m.media-amazon.com/images/G/01/lwa/btnLWA_gold_195x46._CB487591031_.png';
