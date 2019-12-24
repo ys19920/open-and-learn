@@ -27,10 +27,7 @@ export default class LoginPage extends React.Component {
   };
   componentDidMount() {}
   gotoApp = async () => {};
-  login = () => {
-    // const { navigation } = this.props;
-    // navigation.navigate('App');
-  };
+  login = () => {};
   render() {
     return (
       <View style={styles.container}>
@@ -71,7 +68,7 @@ const styles = StyleSheet.create({
   },
 
   text: {
-    fontFamily: 'MazzardM-Medium',
+    // fontFamily: 'Mazzard M',
     fontSize: 50,
     color: 'white'
   }
