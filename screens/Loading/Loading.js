@@ -31,6 +31,7 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 50,
+    fontFamily: 'MazzardM-Medium',
     color: '#ffffff'
   }
 });

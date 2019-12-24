@@ -10,7 +10,7 @@ export default class App extends React.Component {
   };
   componentDidMount() {}
   state = {
-    status: STATUS_MAP.READY,
+    status: STATUS_MAP.THINKING,
     mode: MODE_MAP.TAP
   };
   switchMode = val => {

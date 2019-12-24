@@ -1,25 +1,40 @@
-import { AppLoading } from 'expo';
 import { Asset } from 'expo-asset';
 import * as Font from 'expo-font';
 import React, { useState } from 'react';
-import { Platform, StatusBar, StyleSheet, View } from 'react-native';
+import { Platform, StatusBar, StyleSheet, View, Image, Text } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
 import Navigation from './Navigation';
 import NavigationService from './Services/navigation';
+import Loading from './screens/Loading';
+import { AppLoading, SplashScreen } from 'expo';
 
-export default function App(props) {
-  const [isLoadingComplete, setLoadingComplete] = useState(false);
+export default class App extends React.Component {
+  state = {
+    isSplashReady: false,
+    isAppReady: false
+  };
 
-  if (!isLoadingComplete && !props.skipLoadingScreen) {
-    return (
-      <AppLoading
-        startAsync={loadResourcesAsync}
-        onError={handleLoadingError}
-        onFinish={() => handleFinishLoading(setLoadingComplete)}
-      />
-    );
-  } else {
+  render() {
+    if (!this.state.isSplashReady) {
+      return (
+        <AppLoading
+          startAsync={this._cacheSplashResourcesAsync}
+          onFinish={() => this.setState({ isSplashReady: true })}
+          onError={console.warn}
+          autoHideSplash={false}
+        />
+      );
+    }
+
+    if (!this.state.isAppReady) {
+      return (
+        <View style={{ flex: 1 }}>
+          <Loading Ready={this._cacheResourcesAsync} />
+        </View>
+      );
+    }
+
     return (
       <View style={styles.container}>
         <Navigation
@@ -30,34 +45,24 @@ export default function App(props) {
       </View>
     );
   }
-}
 
-async function loadResourcesAsync() {
-  await Promise.all([
-    // Asset.loadAsync([
-    //   require('./assets/images/robot-dev.png'),
-    //   require('./assets/images/robot-prod.png'),
-    // ]),
-    Font.loadAsync({
-      // This is the font that we are using for our tab bar
-      ...Ionicons.font,
-      // We include SpaceMono because we use it in HomeScreen.js. Feel free to
-      // remove this if you are not using it in your app
-      'mazzard-m': require('./assets/fonts/SpaceMono-Regular.ttf')
-    })
-  ]);
-}
+  _cacheSplashResourcesAsync = async () => {
+    const gif = require('./assets/img/loading.gif');
+    return Asset.fromModule(gif).downloadAsync();
+  };
 
-function handleLoadingError(error) {
-  // In this case, you might want to report the error to your error reporting
-  // service, for example Sentry
-  console.warn(error);
-}
+  _cacheResourcesAsync = async () => {
+    SplashScreen.hide();
+    const images = [require('./assets/images/icon.png')];
 
-function handleFinishLoading(setLoadingComplete) {
-  setLoadingComplete(true);
-}
+    const cacheImages = images.map(image => {
+      return Asset.fromModule(image).downloadAsync();
+    });
 
+    await Promise.all(cacheImages);
+    this.setState({ isAppReady: true });
+  };
+}
 const styles = StyleSheet.create({
   container: {
     flex: 1,

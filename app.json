@@ -1,5 +1,6 @@
 {
   "expo": {
+    "scheme": "openandlearn",
     "name": "Open_learn",
     "slug": "open_learn",
     "privacy": "public",

@@ -1,6 +1,7 @@
 import React from 'react';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createSwitchNavigator, createAppContainer } from 'react-navigation';
+import { fromLeft, fromBottom } from 'react-navigation-transitions';
 
 import LoadingScreen from '../screens/Loading';
 import AuthScreen from '../screens/Auth';
@@ -14,7 +15,8 @@ const AuthStack = createStackNavigator(
   },
   {
     initialRouteName: 'Auth',
-    headerMode: 'none'
+    headerMode: 'none',
+    transitionConfig: () => fromLeft(2000)
   }
 );
 
@@ -26,7 +28,8 @@ const AppStack = createStackNavigator(
   },
   {
     initialRouteName: 'App',
-    headerMode: 'none'
+    headerMode: 'none',
+    transitionConfig: () => fromLeft(2000)
   }
 );
 const PrimaryNav = createSwitchNavigator(

@@ -3,6 +3,7 @@ import { View, StyleSheet, Text, TouchableOpacity, TextInput } from 'react-nativ
 import { Icon, Button } from 'react-native-elements';
 import SwitchToggle from 'react-native-switch-toggle';
 import Color from '../../Config/color';
+import { styles, ToogleStyles, MoreStyles, emailStyles } from './style';
 class SettingScreen extends React.Component {
   back = () => {
     const { navigation } = this.props;
@@ -25,10 +26,13 @@ class SettingScreen extends React.Component {
     return (
       <View style={styles.container}>
         <View style={styles.header}>
-          <TouchableOpacity style={styles.icon} onPress={this.back}>
-            <Icon name='angle-left' type='font-awesome' size={50} color={Color.black} />
-          </TouchableOpacity>
-          <Text style={styles.headerFont}>App Settings</Text>
+          <View style={styles.headerCircle} />
+          <View style={{ justifyContent: 'center' }}>
+            <TouchableOpacity style={styles.icon} onPress={this.back}>
+              <Icon name='angle-left' type='font-awesome' size={50} color={Color.black} />
+            </TouchableOpacity>
+            <Text style={styles.headerFont}>App Settings</Text>
+          </View>
         </View>
         <View style={styles.body}>
           <View>
@@ -83,11 +87,11 @@ class SettingScreen extends React.Component {
             <TextInput style={emailStyles.TextMargin} placeholderTextColor='black' />
           </View>
 
-          <View style={{ paddingTop: 10 }}>
+          <View style={emailStyles.container}>
             <Button title='Add Email' buttonStyle={styles.email} titleStyle={styles.buttonStyle} />
           </View>
 
-          <View style={{ paddingTop: 30 }}>
+          <View style={emailStyles.container}>
             <Button title='Logout' buttonStyle={styles.logout} titleStyle={styles.buttonStyle} />
           </View>
         </View>
@@ -95,86 +99,5 @@ class SettingScreen extends React.Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: 'white',
-    height: '100%',
-    width: '100%'
-  },
-  icon: {
-    width: 20,
-    height: 80
-  },
-  header: {
-    flex: 1,
-    justifyContent: 'center',
-    backgroundColor: Color.darkblue,
-    paddingLeft: 20,
-    paddingTop: 20,
-    paddingBottom: 0
-  },
-  headerFont: {
-    fontSize: 30
-  },
-  bodyFont: {
-    fontSize: 14,
-    color: '#6D6D6D'
-  },
-  body: {
-    flex: 3,
-    padding: 30
-  },
-  email: {
-    backgroundColor: Color.darkblue
-  },
-  logout: {
-    backgroundColor: Color.pink
-  },
-  buttonStyle: {
-    color: 'black'
-  }
-});
-
-const ToogleStyles = StyleSheet.create({
-  toogleInput: {
-    borderBottomWidth: 1,
-    borderColor: '#D8DCFF',
-    paddingBottom: 5,
-    paddingTop: 15,
-    flexDirection: 'row'
-  },
-  toogleText: {
-    justifyContent: 'center'
-  },
-  toogleButton: {
-    alignItems: 'flex-end',
-    flex: 5
-  },
-  toogleContainer: { width: 60, borderRadius: 20, padding: 0 }
-});
-
-const MoreStyles = StyleSheet.create({
-  container: {
-    marginTop: 20
-  },
-  TextMargin: {
-    marginTop: 15,
-    borderBottomColor: '#D8DCFF',
-    borderBottomWidth: 1
-  }
-});
-
-const emailStyles = StyleSheet.create({
-  container: {
-    marginTop: 20
-  },
-  TextMargin: {
-    marginTop: 10,
-    borderBottomColor: Color.redOrange,
-    borderBottomWidth: 1
-  }
-});
 
 export default SettingScreen;

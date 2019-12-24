@@ -37,20 +37,12 @@ const styles = StyleSheet.create({
     width: 20,
     height: 80
   },
-  shadow: {
-    marginLeft: 168,
-    marginTop: -20,
-    width: 170,
-    height: 185,
-    overflow: 'hidden'
-  },
   header: {
     flex: 1,
     backgroundColor: Color.darkblue,
     paddingLeft: 20,
     paddingTop: 20,
-    paddingBottom: 0,
-    overflow: 'hidden'
+    paddingBottom: 0
   },
   headerFont: {
     fontSize: 30
@@ -64,9 +56,9 @@ const styles = StyleSheet.create({
     backgroundColor: Color.primary,
     width: 328,
     height: 312,
-    marginLeft: 168,
     borderRadius: 164,
-    marginTop: -83
+    marginTop: -83,
+    marginLeft: 168
   }
 });
 
