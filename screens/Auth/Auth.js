@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import { WebView } from 'react-native-webview';
 import Color from '../../Config/color';
-
+import source from './source';
 const AmazonUri = 'https://m.media-amazon.com/images/G/01/lwa/btnLWA_gold_195x46._CB487591031_.png';
 // const client_id = 'amzn1.application-oa2-client.3cebc4cf3a0f435fb81269b98d719ab8';
 // const client_secret = 'a16c80234ca059fa6dde6034dd87b5eb5d3bdb716b61195ef114329ec125d9fb';
@@ -39,6 +39,15 @@ export default class LoginPage extends React.Component {
             <Image source={{ uri: AmazonUri }} style={styles.loginButton}></Image>
           </TouchableOpacity>
         </View>
+        {/* <WebView
+          source={{ html: source() }}
+          originWhitelist={['*']}
+          javaScriptEnabledAndroid={true}
+          javaScriptEnabled={true}
+          onMessage={event => {
+            alert('MESSAGE >>>>' + event.nativeEvent.data);
+          }} */}
+        />
       </View>
     );
   }

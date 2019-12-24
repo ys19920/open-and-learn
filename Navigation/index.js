@@ -39,7 +39,7 @@ const PrimaryNav = createSwitchNavigator(
     App: AppStack
   },
   {
-    initialRouteName: 'Auth'
+    initialRouteName: 'App'
   }
 );
 

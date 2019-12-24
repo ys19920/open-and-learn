@@ -3,7 +3,6 @@ import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native';
 import MicComponent from '../Component/Mic';
 import SwitchButton from '../Component/SwitchButton';
 import { STATUS_MAP, MODE_MAP } from '../constants';
-import Carousel from '../Component/Carousels';
 import Color from '../../Config/color';
 
 export default class App extends React.Component {
@@ -55,20 +54,11 @@ export default class App extends React.Component {
           <View style={{ marginBottom: 5 }}>
             <SwitchButton mode={mode} switchMode={this.switchMode} />
           </View>
-          <View style={styles.footer}>
-            <View style={styles.recommend}>
-              <View style={{ marginLeft: -90 }}>
-                <Carousel activeSlider={4} />
-              </View>
+          <View>
+            <View>
+              {/* <Carousel data={data} renderItem={this._renderItem} sliderWidth={2} itemWidth={2} /> */}
             </View>
-            <View style={styles.mic}>
-              <MicComponent status={status} />
-            </View>
-            <View style={styles.activity}>
-              <View>
-                <Carousel />
-              </View>
-            </View>
+            <MicComponent status={status} />
           </View>
         </View>
       </View>
@@ -98,27 +88,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     fontSize: 19
   },
-  footer: {
-    flex: 4,
-    width: '100%',
-    flexDirection: 'row',
-    alignItems: 'center'
-  },
-  recommend: {
-    flex: 1,
-    marginRight: 10
-  },
-  activity: {
-    flex: 1,
-    marginLeft: 22
-  },
   text: {
     // fontFamily: 'Mazzard M',
     fontSize: 50,
     color: '#ffffff'
   },
   settings: { textAlign: 'left' },
-  mic: {
-    justifyContent: 'center'
-  }
+  progress: {}
 });
