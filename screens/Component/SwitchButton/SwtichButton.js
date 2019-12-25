@@ -9,11 +9,11 @@ export default function SwitchButtons(prop) {
         onValueChange={val => prop.switchMode(val)}
         text1='Tap'
         text2='Handsfree'
-        switchWidth={180}
+        switchWidth={160}
         switchHeight={44}
         switchdirection='ltr'
         switchBorderRadius={100}
-        switchSpeedChange={500}
+        switchSpeedChange={400}
         switchBorderColor='#d4d4d4'
         switchBackgroundColor={Color.white}
         btnBorderColor={Color.redOrange}

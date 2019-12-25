@@ -52,9 +52,7 @@ export default class App extends React.Component {
           </View>
         </View>
         <View style={styles.buttonArea}>
-          <View style={{ marginBottom: 5 }}>
-            <SwitchButton mode={mode} switchMode={this.switchMode} />
-          </View>
+          <SwitchButton mode={mode} switchMode={this.switchMode} />
           <View style={styles.footer}>
             <View style={styles.recommend}>
               <View style={{ marginLeft: -90 }}>
@@ -119,6 +117,7 @@ const styles = StyleSheet.create({
   },
   settings: { textAlign: 'left' },
   mic: {
-    justifyContent: 'center'
+    justifyContent: 'center',
+    alignItems: 'center'
   }
 });
