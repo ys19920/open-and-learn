@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native';
 import { Icon, Button } from 'react-native-elements';
 import Color from '../../../Config/color';
+import mainStyle from '../../../Config/mainStyle';
 
 const templateData = [
   {
@@ -37,11 +38,7 @@ const templateData = [
   },
   {
     title: 'Pizza',
-    description: `Welcome to the pizza palace skill. You can order a
-    pizza just by asking Alexa. Welcome to the pizza 
-    palace skill. You can order a pizza just by asking 
-    Alexa. Welcome to the pizza palace skill. You can 
-    order a pizza just by asking Alexa. `,
+    description: `Welcome to the pizza palace skill. You can order a pizza just by asking Alexa. Welcome to the pizza palace skill. You can order a pizza just by asking Alexa. Welcome to the pizza palace skill. You can order a pizza just by asking Alexa. `,
     skill: 'Palace skill',
     image:
       'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT42KeJzQGhknhvj-M2eplUl_G9AJdvoW45UMBlvRQ1moFrurMp'
@@ -80,8 +77,8 @@ export default class Card extends React.Component {
           <View style={watchStyle.container}>
             <Button
               title='Play'
-              buttonStyle={cardStyle.button}
-              titleStyle={cardStyle.buttonTitle}
+              buttonStyle={mainStyle.defaultButton}
+              titleStyle={mainStyle.buttonTitle}
             />
           </View>
         );
@@ -111,8 +108,8 @@ export default class Card extends React.Component {
                 key={key}
                 title={item.toString()}
                 onPress={() => console.log(item)}
-                buttonStyle={VoteStyle.button}
-                titleStyle={cardStyle.buttonTitle}
+                buttonStyle={(mainStyle.defaultButton, { width: 60 })}
+                titleStyle={mainStyle.buttonTitle}
               />
             ))}
           </View>
@@ -123,8 +120,8 @@ export default class Card extends React.Component {
           <View style={watchStyle.container}>
             <Button
               title='Open'
-              buttonStyle={cardStyle.button}
-              titleStyle={cardStyle.buttonTitle}
+              buttonStyle={mainStyle.defaultButton}
+              titleStyle={mainStyle.buttonTitle}
             />
           </View>
         );
@@ -140,8 +137,12 @@ export default class Card extends React.Component {
       <View style={cardStyle.container}>
         {other === -1 && (
           <View>
-            <Text style={{ ...cardStyle.defaultTitle, ...cardStyle.whiteText }}>{data.title}</Text>
-            <Text style={{ ...cardStyle.defaultTitle, ...cardStyle.whiteText }}>{data.skill}</Text>
+            <Text style={{ ...mainStyle.defaultFontSize, ...mainStyle.whiteFont }}>
+              {data.title}
+            </Text>
+            <Text style={{ ...mainStyle.defaultFontSize, ...mainStyle.whiteFont }}>
+              {data.skill}
+            </Text>
           </View>
         )}
         {first_word !== 'See' || data.image ? (
@@ -156,37 +157,36 @@ export default class Card extends React.Component {
           </View>
         ) : (
           <View style={SeeStyle.container}>
-            <Text style={{ color: 'white', fontSize: 30 }}>{data.description}</Text>
+            <Text style={{ ...mainStyle.whiteFont, fontSize: 30 }}>{data.description}</Text>
           </View>
         )}
-
-        <View style={cardStyle.footer}>
-          {first_word !== 'See' ? (
-            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-              <Text style={{ ...cardStyle.defaultTitle, ...cardStyle.whiteText, flex: 1 }}>
-                {data.title}
-              </Text>
-              {this.showIcon()}
-            </View>
-          ) : (
-            <View style={{ justifyContent: 'center', alignItems: 'center' }}>
-              <Text style={{ color: 'white', fontSize: 20 }}>{data.description}</Text>
-            </View>
-          )}
-          {this.showFooter()}
-        </View>
+        {other !== -1 ? (
+          <View style={cardStyle.footer}>
+            {first_word !== 'See' ? (
+              <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                <Text style={{ ...mainStyle.whiteFont, ...mainStyle.defaultFontSize, flex: 1 }}>
+                  {data.title}
+                </Text>
+                {this.showIcon()}
+              </View>
+            ) : (
+              <View style={{ justifyContent: 'center', alignItems: 'center' }}>
+                <Text style={{ color: 'white', fontSize: 20 }}>{data.description}</Text>
+              </View>
+            )}
+            {this.showFooter()}
+          </View>
+        ) : (
+          <View style={cardStyle.container}>
+            <Text style={{ ...mainStyle.whiteFont, fontSize: 15 }}>{data.description}</Text>
+          </View>
+        )}
       </View>
     );
   }
 }
 
 const cardStyle = StyleSheet.create({
-  whiteText: {
-    color: 'white'
-  },
-  defaultTitle: {
-    fontSize: 22
-  },
   container: {
     padding: 20,
     width: '100%',
@@ -203,14 +203,7 @@ const cardStyle = StyleSheet.create({
     borderWidth: 1
   },
   footer: {
-    marginTop: 10,
-    fontSize: 22
-  },
-  button: {
-    backgroundColor: Color.darkblue
-  },
-  buttonTitle: {
-    color: Color.black
+    marginTop: 10
   }
 });
 
@@ -231,7 +224,7 @@ const RateStyle = StyleSheet.create({
     width: '91%'
   },
   thumbDown: {
-    backgroundColor: Color.pink,
+    ...mainStyle.pinkButton,
     width: '91%'
   }
 });
@@ -241,10 +234,6 @@ const VoteStyle = StyleSheet.create({
     marginTop: '5%',
     flexDirection: 'row',
     justifyContent: 'space-between'
-  },
-  button: {
-    backgroundColor: Color.darkblue,
-    width: 60
   }
 });
 
