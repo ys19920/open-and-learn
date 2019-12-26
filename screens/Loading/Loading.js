@@ -1,5 +1,7 @@
 import React from 'react';
 import { Image, AsyncStorage, View, StyleSheet, Text } from 'react-native';
+import { ColorPropType } from 'react-native';
+import Color from '../../Config/color';
 
 class LoadingScreen extends React.Component {
   async componentDidMount() {
@@ -25,7 +27,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#EC6055',
+    backgroundColor: Color.pink,
     height: '100%',
     width: '100%'
   },

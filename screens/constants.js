@@ -9,3 +9,8 @@ export const MODE_MAP = {
   TAP: 'Tap',
   HANDSFREE: 'Handsfree'
 };
+
+export const CARD_MAP = {
+  WATCH: 'Watch',
+  RATE: 'Rate'
+};

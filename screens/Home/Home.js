@@ -4,7 +4,10 @@ import MicComponent from '../Component/Mic';
 import SwitchButton from '../Component/SwitchButton';
 import { STATUS_MAP, MODE_MAP } from '../constants';
 import Carousel from '../Component/Carousels';
+import Card from '../Component/Card';
 import Color from '../../Config/color';
+
+const data = {};
 
 export default class App extends React.Component {
   static navigationOptions = {
@@ -13,7 +16,8 @@ export default class App extends React.Component {
   componentDidMount() {}
   state = {
     status: STATUS_MAP.THINKING,
-    mode: MODE_MAP.TAP
+    mode: MODE_MAP.TAP,
+    response: true
   };
   switchMode = val => {
     this.setState({ mode: val === 1 ? MODE_MAP.TAP : MODE_MAP.HANDSFREE });
@@ -34,22 +38,28 @@ export default class App extends React.Component {
     );
   }
   render() {
-    const { status, mode } = this.state;
+    const { status, mode, response } = this.state;
     return (
       <View style={styles.container}>
         <View style={styles.displayArea}>
-          <View style={{ flexDirection: 'row' }}>
-            <View style={{ flex: 1 }}>
-              <TouchableOpacity onPress={this.settings} style={styles.settings}>
-                <Image source={require('../../assets/img/settings.png')}></Image>
-              </TouchableOpacity>
+          {!response ? (
+            <View>
+              <View style={{ flexDirection: 'row' }}>
+                <View style={{ flex: 1 }}>
+                  <TouchableOpacity onPress={this.settings} style={styles.settings}>
+                    <Image source={require('../../assets/img/settings.png')}></Image>
+                  </TouchableOpacity>
+                </View>
+                <View style={{ alignItems: 'flex-end', flex: 7 }}>
+                  <TouchableOpacity style={styles.progress} onPress={this.progress}>
+                    <Image source={require('../../assets/img/progress.png')}></Image>
+                  </TouchableOpacity>
+                </View>
+              </View>
             </View>
-            <View style={{ alignItems: 'flex-end', flex: 7 }}>
-              <TouchableOpacity style={styles.progress} onPress={this.progress}>
-                <Image source={require('../../assets/img/progress.png')}></Image>
-              </TouchableOpacity>
-            </View>
-          </View>
+          ) : (
+            <Card />
+          )}
         </View>
         <View style={styles.buttonArea}>
           <SwitchButton mode={mode} switchMode={this.switchMode} />
@@ -91,6 +101,7 @@ const styles = StyleSheet.create({
     borderBottomRightRadius: 30
   },
   buttonArea: {
+    marginTop: 5,
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
