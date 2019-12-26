@@ -3,7 +3,6 @@ import { createStackNavigator } from 'react-navigation-stack';
 import { createSwitchNavigator, createAppContainer } from 'react-navigation';
 import { fromLeft, fromBottom } from 'react-navigation-transitions';
 
-import LoadingScreen from '../screens/Loading';
 import AuthScreen from '../screens/Auth';
 import HomeScreen from '../screens/Home';
 import ReportScreen from '../screens/Report';
