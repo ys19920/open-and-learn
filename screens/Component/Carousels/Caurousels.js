@@ -42,7 +42,7 @@ export default class App extends React.Component {
 const carouselStyle = StyleSheet.create({
   slider: {
     backgroundColor: 'red',
-    height: 160,
+    height: 120,
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 20
