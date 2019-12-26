@@ -2,8 +2,10 @@ import React from 'react';
 import { View, StyleSheet, Text, TouchableOpacity, TextInput } from 'react-native';
 import { Icon, Button } from 'react-native-elements';
 import SwitchToggle from 'react-native-switch-toggle';
-import Color from '../../Config/color';
 import { styles, ToogleStyles, MoreStyles, emailStyles } from './style';
+import Color from '../../Config/color';
+import MainStyle from '../../Config/mainStyle';
+import mainStyle from '../../Config/mainStyle';
 class SettingScreen extends React.Component {
   back = () => {
     const { navigation } = this.props;
@@ -70,16 +72,8 @@ class SettingScreen extends React.Component {
 
           <View style={MoreStyles.container}>
             <Text style={styles.bodyFont}>More</Text>
-            <TextInput
-              style={MoreStyles.TextMargin}
-              placeholderTextColor='black'
-              placeholder='Terms of use'
-            />
-            <TextInput
-              style={MoreStyles.TextMargin}
-              placeholderTextColor='black'
-              placeholder='Privacy Policy'
-            />
+            <Text style={MoreStyles.TextMargin}>Terms of use</Text>
+            <Text style={MoreStyles.TextMargin}>Privacy Policy</Text>
           </View>
 
           <View style={emailStyles.container}>
@@ -88,11 +82,19 @@ class SettingScreen extends React.Component {
           </View>
 
           <View style={emailStyles.container}>
-            <Button title='Add Email' buttonStyle={styles.email} titleStyle={styles.buttonTitle} />
+            <Button
+              title='Add Email'
+              buttonStyle={mainStyle.defaultButton}
+              titleStyle={mainStyle.buttonTitle}
+            />
           </View>
 
           <View style={emailStyles.container}>
-            <Button title='Logout' buttonStyle={styles.logout} titleStyle={styles.buttonTitle} />
+            <Button
+              title='Logout'
+              buttonStyle={mainStyle.pinkButton}
+              titleStyle={mainStyle.buttonTitle}
+            />
           </View>
         </View>
       </View>

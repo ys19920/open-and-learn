@@ -40,15 +40,6 @@ export const styles = StyleSheet.create({
     flex: 3,
     padding: 30,
     backgroundColor: 'white'
-  },
-  email: {
-    backgroundColor: Color.darkblue
-  },
-  logout: {
-    backgroundColor: Color.pink
-  },
-  buttonStyle: {
-    color: 'black'
   }
 });
 
@@ -76,6 +67,7 @@ export const MoreStyles = StyleSheet.create({
   },
   TextMargin: {
     marginTop: 10,
+    paddingBottom: 10,
     borderBottomColor: '#D8DCFF',
     borderBottomWidth: 1
   }
