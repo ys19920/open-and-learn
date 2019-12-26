@@ -26,7 +26,10 @@ export default class LoginPage extends React.Component {
   };
   componentDidMount() {}
   gotoApp = async () => {};
-  login = () => {};
+  login = () => {
+    const { navigation } = this.props;
+    navigation.navigate('App');
+  };
   render() {
     return (
       <View style={styles.container}>
@@ -39,15 +42,6 @@ export default class LoginPage extends React.Component {
             <Image source={{ uri: AmazonUri }} style={styles.loginButton}></Image>
           </TouchableOpacity>
         </View>
-        {/* <WebView
-          source={{ html: source() }}
-          originWhitelist={['*']}
-          javaScriptEnabledAndroid={true}
-          javaScriptEnabled={true}
-          onMessage={event => {
-            alert('MESSAGE >>>>' + event.nativeEvent.data);
-          }} */}
-        />
       </View>
     );
   }

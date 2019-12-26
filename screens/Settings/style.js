@@ -72,10 +72,10 @@ export const ToogleStyles = StyleSheet.create({
 
 export const MoreStyles = StyleSheet.create({
   container: {
-    marginTop: 20
+    marginTop: 5
   },
   TextMargin: {
-    marginTop: 15,
+    marginTop: 10,
     borderBottomColor: '#D8DCFF',
     borderBottomWidth: 1
   }
@@ -83,7 +83,7 @@ export const MoreStyles = StyleSheet.create({
 
 export const emailStyles = StyleSheet.create({
   container: {
-    marginTop: 20
+    marginTop: 10
   },
   TextMargin: {
     marginTop: 10,
