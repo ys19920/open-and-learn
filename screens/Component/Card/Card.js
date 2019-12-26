@@ -39,7 +39,7 @@ const templateData = [
   {
     title: 'Pizza',
     description: `Welcome to the pizza palace skill. You can order a pizza just by asking Alexa. Welcome to the pizza palace skill. You can order a pizza just by asking Alexa. Welcome to the pizza palace skill. You can order a pizza just by asking Alexa. `,
-    skill: 'Palace skill',
+    skill: 'Palace Palace',
     image:
       'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT42KeJzQGhknhvj-M2eplUl_G9AJdvoW45UMBlvRQ1moFrurMp'
   }
@@ -177,8 +177,10 @@ export default class Card extends React.Component {
             {this.showFooter()}
           </View>
         ) : (
-          <View style={cardStyle.container}>
-            <Text style={{ ...mainStyle.whiteFont, fontSize: 15 }}>{data.description}</Text>
+          <View style={cardStyle.footer}>
+            <Text style={{ ...mainStyle.whiteFont, fontSize: 14 }} textAlign='auto'>
+              {data.description}
+            </Text>
           </View>
         )}
       </View>
