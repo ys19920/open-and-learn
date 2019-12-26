@@ -7,8 +7,6 @@ import Carousel from '../Component/Carousels';
 import Card from '../Component/Card';
 import Color from '../../Config/color';
 
-const data = {};
-
 export default class App extends React.Component {
   static navigationOptions = {
     title: 'Welcome to the app!'
@@ -65,7 +63,7 @@ export default class App extends React.Component {
           <SwitchButton mode={mode} switchMode={this.switchMode} />
           <View style={styles.footer}>
             <View style={styles.recommend}>
-              <View style={{ marginLeft: -90 }}>
+              <View style={{ marginLeft: -70 }}>
                 <Carousel activeSlider={4} />
               </View>
             </View>

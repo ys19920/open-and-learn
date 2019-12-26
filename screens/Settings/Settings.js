@@ -88,11 +88,11 @@ class SettingScreen extends React.Component {
           </View>
 
           <View style={emailStyles.container}>
-            <Button title='Add Email' buttonStyle={styles.email} titleStyle={styles.buttonStyle} />
+            <Button title='Add Email' buttonStyle={styles.email} titleStyle={styles.buttonTitle} />
           </View>
 
           <View style={emailStyles.container}>
-            <Button title='Logout' buttonStyle={styles.logout} titleStyle={styles.buttonStyle} />
+            <Button title='Logout' buttonStyle={styles.logout} titleStyle={styles.buttonTitle} />
           </View>
         </View>
       </View>

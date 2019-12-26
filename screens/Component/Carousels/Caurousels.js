@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native';
 import Carousel, { Pagination } from 'react-native-snap-carousel';
-
+import Color from '../../../Config/color';
 export default class App extends React.Component {
   static navigationOptions = {
     title: 'Welcome to the app!'
@@ -9,11 +9,11 @@ export default class App extends React.Component {
   state = {
     activeSlide: this.props.activeSlider,
     entries: [
-      { title: 'oneoneoneoneoneone', backgroundColor: 'red' },
-      { title: 'twotwotwotwotwo', backgroundColor: 'white' },
-      { title: 'threethreethreethree', backgroundColor: 'gray' },
-      { title: 'fourfourfourfourfour', backgroundColor: 'black' },
-      { title: 'fivefivefivefivefive', backgroundColor: 'orange' }
+      { title: 'oneoneoneoneoneone', backgroundColor: Color.white },
+      { title: 'twotwotwotwotwo', backgroundColor: Color.darkblue },
+      { title: 'threethreethreethree', backgroundColor: Color.pink },
+      { title: 'fourfourfourfourfour', backgroundColor: Color.redOrange },
+      { title: 'fivefivefivefivefive', backgroundColor: Color.primary }
     ]
   };
   _renderItem = ({ item, index }) => {
