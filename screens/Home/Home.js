@@ -15,7 +15,7 @@ export default class App extends React.Component {
   };
   componentDidMount() {}
   state = {
-    status: STATUS_MAP.THINKING,
+    status: STATUS_MAP.READY,
     mode: MODE_MAP.TAP,
     response: true
   };

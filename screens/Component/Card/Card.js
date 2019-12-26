@@ -12,29 +12,50 @@ const templateData = [
   {
     title: 'Rate: Equations',
     image:
-      'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT42KeJzQGhknhvj-M2eplUl_G9AJdvoW45UMBlvRQ1moFrurMp'
+      'https://www.remove.bg/assets/start_remove-79a4598a05a77ca999df1dcb434160994b6fde2c3e9101984fb1be0f16d0a74e.png'
   },
   {
     title: 'Vote: Who should win?',
     image:
-      'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT42KeJzQGhknhvj-M2eplUl_G9AJdvoW45UMBlvRQ1moFrurMp'
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTxbWDRp0uDnhvGkesRkA8DsHUomz2vNr07nD7AEE1_I29izRR6'
   },
   {
     title: 'Open: Site',
     image:
-      'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT42KeJzQGhknhvj-M2eplUl_G9AJdvoW45UMBlvRQ1moFrurMp'
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQ4ehmeD0uAxN1B3hr7aBKH93pCMz7i48anPnXuvWqIJzEZGeYJ'
   },
   {
     title: 'See: What is 3 plus 3',
-    description: ' What is 3 plus 3',
+    description: ' What is 3 plus 3?',
     image:
       'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT42KeJzQGhknhvj-M2eplUl_G9AJdvoW45UMBlvRQ1moFrurMp'
+  },
+
+  {
+    title: 'See: What is 3 plus 3',
+    description: ' What is 3 plus 3?'
   }
 ];
 
 export default class Card extends React.Component {
   state = {
-    data: templateData[4]
+    data: templateData[0],
+    index: 0,
+    interval: null
+  };
+  componentWillUnmount() {
+    if (this.state.interval) clearInterval(this.state.interval);
+  }
+  componentDidMount() {
+    let interval = setInterval(this.nextItem, 2000);
+    this.setState({ interval });
+  }
+  nextItem = () => {
+    const { index } = this.state;
+    this.setState({
+      index: (index + 1) % templateData.length,
+      data: templateData[(index + 1) % templateData.length]
+    });
   };
   checktype = () => {
     return this.state.data.title.split(':')[0];
@@ -112,7 +133,7 @@ export default class Card extends React.Component {
     const { data } = this.state;
     return (
       <View style={cardStyle.container}>
-        {this.checktype() !== 'See' ? (
+        {this.checktype() !== 'See' || data.image ? (
           <View style={cardStyle.imageContainer}>
             <Image
               source={{
@@ -123,15 +144,21 @@ export default class Card extends React.Component {
             />
           </View>
         ) : (
-          <View>
-            <Text>{data.description}</Text>
+          <View style={SeeStyle.container}>
+            <Text style={{ color: 'white', fontSize: 30 }}>{data.description}</Text>
           </View>
         )}
         <View style={cardStyle.footer}>
-          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-            <Text style={cardStyle.Text}>{data.title}</Text>
-            {this.showIcon()}
-          </View>
+          {this.checktype() !== 'See' ? (
+            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+              <Text style={cardStyle.Text}>{data.title}</Text>
+              {this.showIcon()}
+            </View>
+          ) : (
+            <View style={{ justifyContent: 'center', alignItems: 'center' }}>
+              <Text style={{ color: 'white', fontSize: 20 }}>{data.description}</Text>
+            </View>
+          )}
           {this.showButtons()}
         </View>
       </View>
@@ -144,7 +171,6 @@ const cardStyle = StyleSheet.create({
     padding: 20,
     width: '100%',
     height: '90%'
-    // backgroundColor: 'white'
   },
   Text: {
     fontSize: 22,
@@ -162,7 +188,7 @@ const cardStyle = StyleSheet.create({
     borderWidth: 1
   },
   footer: {
-    marginTop: 20,
+    marginTop: 10,
     color: 'white',
     fontSize: 22
   },
@@ -201,6 +227,21 @@ const VoteStyle = StyleSheet.create({
     marginTop: '5%',
     flexDirection: 'row',
     justifyContent: 'space-between'
+  },
+  button: {
+    backgroundColor: Color.darkblue,
+    width: 60
+  }
+});
+
+const SeeStyle = StyleSheet.create({
+  container: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 20,
+    width: '100%',
+    height: '70%',
+    color: 'white'
   },
   button: {
     backgroundColor: Color.darkblue,
