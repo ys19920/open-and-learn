@@ -14,8 +14,8 @@ export default function SwitchButtons(prop) {
         switchdirection='ltr'
         switchBorderRadius={100}
         switchSpeedChange={500}
-        switchBorderColor='#d4d4d4'
-        switchBackgroundColor={Color.white}
+        switchBorderColor='#F8F8F8'
+        switchBackgroundColor='#F8F8F8'
         btnBorderColor={Color.redOrange}
         btnBackgroundColor={Color.redOrange}
         fontColor={Color.black}

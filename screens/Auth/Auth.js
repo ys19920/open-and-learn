@@ -8,8 +8,9 @@ import {
   TouchableOpacity,
   AsyncStorage
 } from 'react-native';
-import { WebView } from 'react-native-webview';
 import Color from '../../Config/color';
+import mainStyle from '../../Config/mainStyle';
+
 import source from './source';
 const AmazonUri = 'https://m.media-amazon.com/images/G/01/lwa/btnLWA_gold_195x46._CB487591031_.png';
 // const client_id = 'amzn1.application-oa2-client.3cebc4cf3a0f435fb81269b98d719ab8';
@@ -34,8 +35,8 @@ export default class LoginPage extends React.Component {
     return (
       <View style={styles.container}>
         <View style={styles.displayArea}>
-          <Text style={styles.text}>Open & Learn</Text>
-          <Text style={styles.text}>Let's go</Text>
+          <Text style={styles.fontOpen}>Open & Learn</Text>
+          <Text style={styles.fontGo}>Let's go</Text>
         </View>
         <View style={styles.buttonArea}>
           <TouchableOpacity onPress={this.login}>
@@ -69,9 +70,16 @@ const styles = StyleSheet.create({
     height: 46
   },
 
-  text: {
-    // fontFamily: 'Mazzard M',
+  fontOpen: {
+    fontFamily: 'MazzardM-Medium',
     fontSize: 50,
-    color: 'white'
+    ...mainStyle.whiteFont
+  },
+
+  fontGo: {
+    fontFamily: 'MazzardM-Medium',
+    // fontFamily: 'Mazzard',
+    fontSize: 50,
+    ...mainStyle.whiteFont
   }
 });

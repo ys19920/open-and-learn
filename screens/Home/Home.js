@@ -13,7 +13,7 @@ export default class App extends React.Component {
   };
   componentDidMount() {}
   state = {
-    status: STATUS_MAP.READY,
+    status: STATUS_MAP.SPEAKING,
     mode: MODE_MAP.TAP,
     response: false
   };
@@ -60,21 +60,23 @@ export default class App extends React.Component {
           )}
         </View>
         <View style={styles.buttonArea}>
-          <SwitchButton mode={mode} switchMode={this.switchMode} />
-          <View style={styles.footer}>
-            <View style={styles.recommend}>
-              <View style={{ marginLeft: -70 }}>
-                <Carousel activeSlider={4} />
+          <View style={{ flexDirection: 'row' }}>
+            <View style={{ alignItems: 'center', flex: 1 }}>
+              <View style={{ height: 46, justifyContent: 'center' }}>
+                <Text style={{ fontSize: 12 }}>Ideas</Text>
               </View>
             </View>
-            <View style={styles.mic}>
-              <MicComponent status={status} />
+            <View style={{ alignItems: 'center', flex: 5 }}>
+              <SwitchButton mode={mode} switchMode={this.switchMode} />
             </View>
-            <View style={styles.activity}>
-              <View>
-                <Carousel />
+            <View style={{ alignItems: 'flex-start', flex: 1 }}>
+              <View style={{ height: 46, justifyContent: 'center' }}>
+                <Text style={{ fontSize: 12 }}>Recent</Text>
               </View>
             </View>
+          </View>
+          <View style={{ alignItems: 'center', justifyContent: 'center', marginTop: '3%' }}>
+            <MicComponent status={status} />
           </View>
         </View>
       </View>
@@ -86,7 +88,7 @@ const styles = StyleSheet.create({
   container: {
     height: '100%',
     width: '100%',
-    backgroundColor: '#D8D8D8',
+    backgroundColor: '#F8F8F8',
     flex: 3
   },
   displayArea: {
@@ -100,10 +102,7 @@ const styles = StyleSheet.create({
   },
   buttonArea: {
     marginTop: 5,
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    fontSize: 19
+    flex: 1
   },
   footer: {
     flex: 4,
@@ -112,12 +111,10 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   recommend: {
-    flex: 1,
-    marginRight: 10
+    flex: 1
   },
   activity: {
-    flex: 1,
-    marginLeft: 22
+    flex: 1
   },
   text: {
     // fontFamily: 'Mazzard M',
@@ -126,6 +123,7 @@ const styles = StyleSheet.create({
   },
   settings: { textAlign: 'left' },
   mic: {
+    flex: 1,
     justifyContent: 'center',
     alignItems: 'center'
   }

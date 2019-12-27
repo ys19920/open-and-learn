@@ -71,7 +71,8 @@ export default class App extends React.Component {
     await Promise.all([
       cacheImages,
       Font.loadAsync({
-        'MazzardM-Medium': require('./assets/fonts/MazzardM-Medium.otf')
+        'MazzardM-Medium': require('./assets/fonts/MazzardM-Medium.otf'),
+        Mazzard: require('./assets/fonts/MazzardH-Black.otf')
       })
     ]);
     this.setState({ isAppReady: true });
