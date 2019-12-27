@@ -63,10 +63,10 @@ export const ToogleStyles = StyleSheet.create({
 
 export const MoreStyles = StyleSheet.create({
   container: {
-    marginTop: 5
+    marginTop: 20
   },
   TextMargin: {
-    marginTop: 10,
+    marginTop: 15,
     paddingBottom: 10,
     borderBottomColor: '#D8DCFF',
     borderBottomWidth: 1

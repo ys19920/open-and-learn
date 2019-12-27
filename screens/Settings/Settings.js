@@ -4,8 +4,8 @@ import { Icon, Button } from 'react-native-elements';
 import SwitchToggle from 'react-native-switch-toggle';
 import { styles, ToogleStyles, MoreStyles, emailStyles } from './style';
 import Color from '../../Config/color';
-import MainStyle from '../../Config/mainStyle';
 import mainStyle from '../../Config/mainStyle';
+import { WebView } from 'react-native-webview';
 class SettingScreen extends React.Component {
   back = () => {
     const { navigation } = this.props;
@@ -13,7 +13,9 @@ class SettingScreen extends React.Component {
   };
   state = {
     anonyMode: false,
-    audioMode: false
+    audioMode: false,
+    showPrivacy: false,
+    showTerm: false
   };
   changeAnonyMode = () => {
     const { anonyMode } = this.state;
@@ -25,6 +27,25 @@ class SettingScreen extends React.Component {
     this.setState({ audioMode: !audioMode });
   };
   render() {
+    const { showPrivacy, showTerm } = this.state;
+    if (showTerm)
+      return (
+        <View style={{ width: '100%', height: '100%' }}>
+          <WebView
+            source={{ uri: 'https://policies.google.com/terms?fg=1' }}
+            style={{ marginTop: 20 }}
+          />
+        </View>
+      );
+    if (showPrivacy)
+      return (
+        <View style={{ width: '100%', height: '100%' }}>
+          <WebView
+            source={{ uri: 'https://goaskmyclass.com/privacy-policy' }}
+            style={{ marginTop: 20 }}
+          />
+        </View>
+      );
     return (
       <View style={styles.container}>
         <View style={styles.header}>
@@ -72,8 +93,19 @@ class SettingScreen extends React.Component {
 
           <View style={MoreStyles.container}>
             <Text style={styles.bodyFont}>More</Text>
-            <Text style={MoreStyles.TextMargin}>Terms of use</Text>
-            <Text style={MoreStyles.TextMargin}>Privacy Policy</Text>
+            <TouchableOpacity>
+              <Text style={MoreStyles.TextMargin} onPress={() => this.setState({ showTerm: true })}>
+                Terms of use
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity>
+              <Text
+                style={MoreStyles.TextMargin}
+                onPress={() => this.setState({ showPrivacy: true })}
+              >
+                Privacy Policy
+              </Text>
+            </TouchableOpacity>
           </View>
 
           <View style={emailStyles.container}>

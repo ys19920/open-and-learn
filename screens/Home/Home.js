@@ -15,7 +15,7 @@ export default class App extends React.Component {
   state = {
     status: STATUS_MAP.READY,
     mode: MODE_MAP.TAP,
-    response: true
+    response: false
   };
   switchMode = val => {
     this.setState({ mode: val === 1 ? MODE_MAP.TAP : MODE_MAP.HANDSFREE });
