@@ -3,7 +3,7 @@ import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native';
 import MicComponent from '../Component/Mic';
 import SwitchButton from '../Component/SwitchButton';
 import { STATUS_MAP, MODE_MAP } from '../constants';
-import Carousel from '../Component/Carousels';
+import SwipeableViews from 'react-swipeable-views-native';
 import Card from '../Component/Card';
 import Color from '../../Config/color';
 
@@ -13,9 +13,9 @@ export default class App extends React.Component {
   };
   componentDidMount() {}
   state = {
-    status: STATUS_MAP.SPEAKING,
+    status: STATUS_MAP.READY,
     mode: MODE_MAP.TAP,
-    response: true
+    response: false
   };
   switchMode = val => {
     this.setState({ mode: val === 1 ? MODE_MAP.TAP : MODE_MAP.HANDSFREE });
@@ -71,6 +71,18 @@ export default class App extends React.Component {
           </View>
           <View style={{ alignItems: 'center', justifyContent: 'center', marginTop: '3%' }}>
             <MicComponent status={status} />
+
+            {/* <SwipeableViews style={swipeStyles.slideContainer}>
+              <View style={[swipeStyles.slide, swipeStyles.slide1]}>
+                <Text style={swipeStyles.text}>slide n°1</Text>
+              </View>
+              <View style={[swipeStyles.slide, swipeStyles.slide2]}>
+                <Text style={swipeStyles.text}>slide n°2</Text>
+              </View>
+              <View style={[swipeStyles.slide, swipeStyles.slide3]}>
+                <Text style={swipeStyles.text}>slide n°3</Text>
+              </View>
+            </SwipeableViews> */}
           </View>
         </View>
       </View>
@@ -120,5 +132,27 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center'
+  }
+});
+const swipeStyles = StyleSheet.create({
+  slideContainer: {
+    height: 100
+  },
+  slide: {
+    padding: 15,
+    height: 100
+  },
+  slide1: {
+    backgroundColor: '#FEA900'
+  },
+  slide2: {
+    backgroundColor: '#B3DC4A'
+  },
+  slide3: {
+    backgroundColor: '#6AC0FF'
+  },
+  text: {
+    color: '#fff',
+    fontSize: 16
   }
 });

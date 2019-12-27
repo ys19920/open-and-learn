@@ -7,6 +7,8 @@ import AuthScreen from '../screens/Auth';
 import HomeScreen from '../screens/Home';
 import ReportScreen from '../screens/Report';
 import SettingScreen from '../screens/Settings';
+import PolicyScreen from '../screens/Policy';
+import TermsScreen from '../screens/Terms';
 
 const AuthStack = createStackNavigator(
   {
@@ -19,11 +21,22 @@ const AuthStack = createStackNavigator(
   }
 );
 
+const SettingsStack = createStackNavigator(
+  {
+    Setting: SettingScreen,
+    Policy: PolicyScreen,
+    Terms: TermsScreen
+  },
+  {
+    initialRouteName: 'Setting',
+    headerMode: 'none'
+  }
+);
 const AppStack = createStackNavigator(
   {
     App: HomeScreen,
     Report: ReportScreen,
-    Setting: SettingScreen
+    Setting: SettingsStack
   },
   {
     initialRouteName: 'App',

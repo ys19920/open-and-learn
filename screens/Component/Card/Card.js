@@ -47,7 +47,7 @@ const templateData = [
 
 export default class Card extends React.Component {
   state = {
-    data: templateData[4],
+    data: templateData[6],
     interval: null
   };
 
@@ -133,21 +133,15 @@ export default class Card extends React.Component {
     let status = ['See', 'Watch', 'Link', 'Vote', 'Rate', 'Open'];
     let first_word = this.checktype();
     let other = status.indexOf(first_word);
-    if (first_word == 'See' && !data.image) {
-      <View style={cardStyle.container}>
-        <Text style={{ ...mainStyle.whiteFont, fontSize: 30 }}>{data.description}</Text>
-      </View>;
-    }
+
     return (
       <View style={cardStyle.container}>
         {other === -1 && (
-          <View>
+          <View style={{ marginBottom: 5, maringTop: '-20' }}>
             <Text style={{ ...mainStyle.defaultFontSize, ...mainStyle.whiteFont }}>
               {data.title}
             </Text>
-            <Text style={{ ...mainStyle.defaultFontSize, ...mainStyle.whiteFont }}>
-              {data.skill}
-            </Text>
+            <Text style={{ fontSize: 14, ...mainStyle.whiteFont }}>{data.skill}</Text>
           </View>
         )}
         {first_word !== 'See' || data.image ? (
@@ -165,28 +159,27 @@ export default class Card extends React.Component {
             <Text style={{ ...mainStyle.whiteFont, fontSize: 30 }}>{data.description}</Text>
           </View>
         )}
-        {other !== -1 ? (
-          <View style={cardStyle.footer}>
-            {first_word !== 'See' && (
-              <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                <Text style={{ ...mainStyle.whiteFont, ...mainStyle.defaultFontSize, flex: 1 }}>
-                  {data.title}
-                </Text>
-                {this.showIcon()}
-              </View>
-            )}
-            {first_word === 'See' && data.image && (
-              <View style={{ justifyContent: 'center', alignItems: 'center' }}>
-                <Text style={{ color: 'white', fontSize: 20 }}>{data.description}</Text>
-              </View>
-            )}
-            {this.showFooter()}
-          </View>
-        ) : (
-          <View style={cardStyle.footer}>
+        {other === -1 && (
+          <View style={{ marginTop: '5%' }}>
             <Text style={{ ...mainStyle.whiteFont, fontSize: 14 }} textAlign='auto'>
               {data.description}
             </Text>
+          </View>
+        )}
+        {other !== -1 && first_word === 'See' && data.image && (
+          <View style={{ justifyContent: 'center', alignItems: 'center', marginTop: '5%' }}>
+            <Text style={{ color: 'white', fontSize: 20 }}>{data.description}</Text>
+          </View>
+        )}
+        {other !== -1 && first_word != 'See' && (
+          <View style={cardStyle.footer}>
+            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+              <Text style={{ ...mainStyle.whiteFont, ...mainStyle.defaultFontSize, flex: 1 }}>
+                {data.title}
+              </Text>
+              {this.showIcon()}
+            </View>
+            {this.showFooter()}
           </View>
         )}
       </View>
@@ -196,12 +189,14 @@ export default class Card extends React.Component {
 
 const cardStyle = StyleSheet.create({
   container: {
-    padding: 20,
+    paddingTop: 12,
+    paddingLeft: 27.5,
+    paddingRight: 27.5,
     width: '100%',
     height: '100%'
   },
   imageContainer: {
-    height: '70%',
+    height: '55%',
     backgroundColor: 'white'
   },
   image: {
@@ -211,19 +206,19 @@ const cardStyle = StyleSheet.create({
     borderWidth: 1
   },
   footer: {
-    marginTop: 10
+    marginTop: '10%'
   }
 });
 
 const watchStyle = StyleSheet.create({
   container: {
-    marginTop: '5%'
+    marginTop: '10%'
   }
 });
 
 const RateStyle = StyleSheet.create({
   container: {
-    marginTop: '5%',
+    ...watchStyle.container,
     flexDirection: 'row',
     justifyContent: 'space-between'
   },
@@ -239,7 +234,7 @@ const RateStyle = StyleSheet.create({
 
 const VoteStyle = StyleSheet.create({
   container: {
-    marginTop: '5%',
+    ...watchStyle.container,
     flexDirection: 'row',
     justifyContent: 'space-between'
   }

@@ -36,6 +36,7 @@
     "react-navigation-stack": "~1.10.3",
     "react-navigation-tabs": "~2.6.2",
     "react-navigation-transitions": "^1.0.12",
+    "react-swipeable-views-native": "^0.13.2",
     "switch-button-react-native": "^1.0.3"
   },
   "devDependencies": {
