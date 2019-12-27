@@ -31,7 +31,7 @@ class SettingScreen extends React.Component {
   };
   terms = () => {
     const { navigation } = this.props;
-    navigation.navigate('Term');
+    navigation.navigate('Terms');
   };
   render() {
     return (
