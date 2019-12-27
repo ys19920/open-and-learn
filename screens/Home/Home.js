@@ -9,13 +9,13 @@ import Color from '../../Config/color';
 
 export default class App extends React.Component {
   static navigationOptions = {
-    title: 'Welcome to the app!'
+    title: 'Welcome to Home Screen!'
   };
   componentDidMount() {}
   state = {
     status: STATUS_MAP.SPEAKING,
     mode: MODE_MAP.TAP,
-    response: false
+    response: true
   };
   switchMode = val => {
     this.setState({ mode: val === 1 ? MODE_MAP.TAP : MODE_MAP.HANDSFREE });
@@ -28,13 +28,7 @@ export default class App extends React.Component {
     const { navigation } = this.props;
     navigation.navigate('Report');
   };
-  _renderItem({ item, index }) {
-    return (
-      <View>
-        <Text>{item.title}</Text>
-      </View>
-    );
-  }
+
   render() {
     const { status, mode, response } = this.state;
     return (

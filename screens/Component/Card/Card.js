@@ -47,7 +47,7 @@ const templateData = [
 
 export default class Card extends React.Component {
   state = {
-    data: templateData[6],
+    data: templateData[5],
     interval: null
   };
 
@@ -171,7 +171,9 @@ export default class Card extends React.Component {
               </View>
             ) : (
               <View style={{ justifyContent: 'center', alignItems: 'center' }}>
-                <Text style={{ color: 'white', fontSize: 20 }}>{data.description}</Text>
+                {data.img && (
+                  <Text style={{ color: 'white', fontSize: 20 }}>{data.description}</Text>
+                )}
               </View>
             )}
             {this.showFooter()}
