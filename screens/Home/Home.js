@@ -3,10 +3,17 @@ import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native';
 import MicComponent from '../Component/Mic';
 import SwitchButton from '../Component/SwitchButton';
 import { STATUS_MAP, MODE_MAP } from '../constants';
-import SwipeableViews from 'react-swipeable-views-native';
 import Card from '../Component/Card';
 import Color from '../../Config/color';
-
+import Carousel from '../Component/Carousels';
+let leftColors = ['#DE6B48', '#E5B181', '#F3DE8A', '#AAD493', '#7DBBC3'];
+let data = [
+  { title: 'Calm down' },
+  { title: 'Mindfulness' },
+  { title: '2 minutes count down' },
+  { title: 'Calm down' },
+  { title: 'Calm down' }
+];
 export default class App extends React.Component {
   static navigationOptions = {
     title: 'Welcome to Home Screen!'
@@ -15,7 +22,8 @@ export default class App extends React.Component {
   state = {
     status: STATUS_MAP.READY,
     mode: MODE_MAP.TAP,
-    response: false
+    response: false,
+    show: 'Initial'
   };
   switchMode = val => {
     this.setState({ mode: val === 1 ? MODE_MAP.TAP : MODE_MAP.HANDSFREE });
@@ -28,7 +36,10 @@ export default class App extends React.Component {
     const { navigation } = this.props;
     navigation.navigate('Report');
   };
-
+  StopMic = val => {
+    console.log(val);
+    this.setState({ show: val });
+  };
   render() {
     const { status, mode, response } = this.state;
     return (
@@ -69,20 +80,39 @@ export default class App extends React.Component {
               </View>
             </View>
           </View>
-          <View style={{ alignItems: 'center', justifyContent: 'center', marginTop: '3%' }}>
-            <MicComponent status={status} />
-
-            {/* <SwipeableViews style={swipeStyles.slideContainer}>
-              <View style={[swipeStyles.slide, swipeStyles.slide1]}>
-                <Text style={swipeStyles.text}>slide n°1</Text>
+          <View style={{ flexDirection: 'row' }}>
+            {(this.state.show === 'Initial' || this.state.show === 'Swipe') && (
+              <View style={{ position: 'absolute', zIndex: 2 }}>
+                <Carousel activeSlider={5} StopMic={this.StopMic} />
               </View>
-              <View style={[swipeStyles.slide, swipeStyles.slide2]}>
-                <Text style={swipeStyles.text}>slide n°2</Text>
+            )}
+            {this.state.show === 'Pressed' && <Text>Hello WOrld</Text>}
+            {(this.state.show === 'Initial' || this.state.show === 'Pressed') && (
+              <View
+                style={{
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  width: '100%',
+                  height: '100%'
+                }}
+              >
+                <MicComponent />
               </View>
-              <View style={[swipeStyles.slide, swipeStyles.slide3]}>
-                <Text style={swipeStyles.text}>slide n°3</Text>
-              </View>
-            </SwipeableViews> */}
+            )}
+            {/* <View style={{ position: 'absolute', zIndex: 2 }}>
+              <Carousel />
+            </View> */}
+            {/* <Text>Hello World</Text> */}
+            {/* <Carousel activeSlider={4} /> */}
+            {/* <View
+              style={{
+                flexDirection: 'row',
+                justifyContent: 'space-between',
+                borderWidth: 2,
+                borderColor: 'red',
+                width: '100%'
+              }}
+            ></View> */}
           </View>
         </View>
       </View>
@@ -132,27 +162,5 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center'
-  }
-});
-const swipeStyles = StyleSheet.create({
-  slideContainer: {
-    height: 100
-  },
-  slide: {
-    padding: 15,
-    height: 100
-  },
-  slide1: {
-    backgroundColor: '#FEA900'
-  },
-  slide2: {
-    backgroundColor: '#B3DC4A'
-  },
-  slide3: {
-    backgroundColor: '#6AC0FF'
-  },
-  text: {
-    color: '#fff',
-    fontSize: 16
   }
 });
