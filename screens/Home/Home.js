@@ -20,7 +20,7 @@ export default class App extends React.Component {
   };
   componentDidMount() {}
   state = {
-    status: STATUS_MAP.READY,
+    status: STATUS_MAP.THINKING,
     mode: MODE_MAP.TAP,
     response: false,
     show: 'Initial'
@@ -80,46 +80,23 @@ export default class App extends React.Component {
               </View>
             </View>
           </View>
-          <View style={{ flexDirection: 'row' }}>
-            {(this.state.show === 'Initial' || this.state.show === 'Swipe') && (
-              <View style={{ position: 'absolute', zIndex: 2 }}>
-                <Carousel activeSlider={5} StopMic={this.StopMic} />
-              </View>
-            )}
-            {this.state.show === 'Pressed' && <Text>Hello WOrld</Text>}
-            {(this.state.show === 'Initial' || this.state.show === 'Pressed') && (
-              <View
-                style={{
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  width: '100%',
-                  height: '100%'
-                }}
-              >
-                <MicComponent />
-              </View>
-            )}
-            {/* <View style={{ position: 'absolute', zIndex: 2 }}>
-              <Carousel />
-            </View> */}
-            {/* <Text>Hello World</Text> */}
-            {/* <Carousel activeSlider={4} /> */}
-            {/* <View
-              style={{
-                flexDirection: 'row',
-                justifyContent: 'space-between',
-                borderWidth: 2,
-                borderColor: 'red',
-                width: '100%'
-              }}
-            ></View> */}
+          <View
+            style={{
+              justifyContent: 'center',
+              alignItems: 'center',
+              marginTop: 5
+            }}
+          >
+            <MicComponent status={status} />
+            <View style={{ position: 'absolute' }}>
+              <Carousel activeSlider={5} />
+            </View>
           </View>
         </View>
       </View>
     );
   }
 }
-
 const styles = StyleSheet.create({
   container: {
     height: '100%',
@@ -137,8 +114,9 @@ const styles = StyleSheet.create({
     borderBottomRightRadius: 30
   },
   buttonArea: {
-    marginTop: 5,
-    flex: 1
+    paddingTop: 0,
+    flex: 1,
+    justifyContent: 'center'
   },
   footer: {
     flex: 4,
