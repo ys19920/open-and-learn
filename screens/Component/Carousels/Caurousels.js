@@ -17,40 +17,57 @@ export default class App extends React.Component {
       { title: 'Calm down', backgroundColor: '#AAD493' },
       { title: 'Calm down', backgroundColor: '#7DBBC3' },
       { title: '', backgroundColor: '#F8F8F8', id: 'space' },
-      { title: 'Calm down', backgroundColor: '#7DBBC3' },
-      { title: 'Calm down', backgroundColor: '#AAD493' },
-      { title: 'Calm down', backgroundColor: '#7DBBC3' }
-    ]
+      { title: 'Right one', backgroundColor: '#7DBBC3' },
+      { title: 'Right two', backgroundColor: '#AAD493' }
+    ],
+    status: false
   };
+  componentDidMount() {
+    setTimeout(() => this.setState({ status: true }), 3000);
+  }
+
   _renderItem = ({ item, index }) => {
-    if (item.id) return <View></View>;
+    if (item.id) return;
     return (
-      // <TouchableOpacity onPress={this.show}>
-      <View
-        key={index}
-        style={{
-          ...carouselStyle.slider,
-          backgroundColor: item.backgroundColor,
-          width: 140
-        }}
-      >
-        <Text style={carouselStyle.fontGallery}>{item.title}</Text>
-      </View>
-      // </Tou>
+      <TouchableOpacity onPress={() => console.log('clicked')}>
+        <View
+          key={index}
+          style={{
+            ...carouselStyle.slider,
+            backgroundColor: item.backgroundColor,
+            width: 140
+          }}
+        >
+          <Text style={carouselStyle.fontGallery}>{item.title}</Text>
+        </View>
+      </TouchableOpacity>
     );
   };
-  show = () => {
-    // this.props.StopMic('Pressed');
+
+  componentDidUpdate() {
+    let { status } = this.state;
+    if (!status) this.setState({ status: true });
+  }
+
+  show = index => {
+    console.log(index);
+    this.props.hideMic('Initial');
   };
+
   changeItem = index => {
-    // this.setState({ activeSlide: index });
+    if (!this.state.status) this.setState({ status: true });
   };
+
   startScroll = () => {
-    // this.props.StopMic('Scroll');
+    if (this.state.status) this.props.hideMic('scrolling');
   };
+
   render() {
-    // console.log(Dimensions.get('window').width);
-    // console.log(this.props.marginLeft);
+    let { entries, activeSlide } = this.state;
+    if (this.props.show === 'scrolling' && entries[6].id) {
+      entries.splice(6, 1);
+      // activeSlide = activeSlide - 1;
+    }
     return (
       <View
         style={{
@@ -61,14 +78,15 @@ export default class App extends React.Component {
       >
         <Carousel
           activeSlideAlignment='start'
-          data={this.state.entries}
+          data={entries}
           renderItem={this._renderItem}
           onSnapToItem={this.changeItem}
           sliderWidth={455}
           itemWidth={200}
-          firstItem={this.state.activeSlide}
+          firstItem={activeSlide}
           inactiveSlideScale={1}
-          onBeforeSnapToItem={this.startScroll}
+          onScroll={this.startScroll}
+          inactiveSlideOpacity={1}
         />
       </View>
     );

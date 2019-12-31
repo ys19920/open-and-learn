@@ -23,7 +23,8 @@ export default class App extends React.Component {
     status: STATUS_MAP.THINKING,
     mode: MODE_MAP.TAP,
     response: false,
-    show: 'Initial'
+    show: 'Initial',
+    activeSlider: 5
   };
   switchMode = val => {
     this.setState({ mode: val === 1 ? MODE_MAP.TAP : MODE_MAP.HANDSFREE });
@@ -36,12 +37,13 @@ export default class App extends React.Component {
     const { navigation } = this.props;
     navigation.navigate('Report');
   };
-  StopMic = val => {
-    console.log(val);
-    this.setState({ show: val });
+  hideMic = val => {
+    let { activeSlider } = this.state;
+    console.log(activeSlider, val);
+    this.setState({ show: val, activeSlider: activeSlider });
   };
   render() {
-    const { status, mode, response } = this.state;
+    const { status, mode, response, show } = this.state;
     return (
       <View style={styles.container}>
         <View style={styles.displayArea}>
@@ -87,9 +89,19 @@ export default class App extends React.Component {
               marginTop: 5
             }}
           >
-            <MicComponent status={status} />
+            {show !== 'scrolling' ? (
+              <MicComponent status={status} />
+            ) : (
+              <View
+                style={{
+                  backgroundColor: '#F8F8F8',
+                  height: 140,
+                  width: 140
+                }}
+              ></View>
+            )}
             <View style={{ position: 'absolute' }}>
-              <Carousel activeSlider={5} />
+              <Carousel activeSlider={this.state.activeSlider} show={show} hideMic={this.hideMic} />
             </View>
           </View>
         </View>
