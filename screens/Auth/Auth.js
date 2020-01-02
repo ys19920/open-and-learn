@@ -25,12 +25,16 @@ export default class LoginPage extends React.Component {
   state = {
     show: false
   };
+
   componentDidMount() {}
+
   gotoApp = async () => {};
+
   login = () => {
     const { navigation } = this.props;
     navigation.navigate('App');
   };
+
   render() {
     return (
       <View style={styles.container}>
