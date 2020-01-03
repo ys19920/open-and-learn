@@ -53,7 +53,7 @@ export default class LoginPage extends React.Component {
             </View>
           </Animated.View>
         </View>
-        <View style={styles.buttonArea}>
+        <View style={{ flex: 1 }}>
           <Animated.View
             style={{
               transform: [
@@ -66,15 +66,7 @@ export default class LoginPage extends React.Component {
               ]
             }}
           >
-            <View
-              style={{
-                backgroundColor: Color.nightDark,
-                width: '100%',
-                height: '100%',
-                alignItems: 'center',
-                justifyContent: 'center'
-              }}
-            >
+            <View style={style.buttonArea}>
               <TouchableOpacity onPress={this.login}>
                 <Image source={{ uri: AmazonUri }} style={styles.loginButton}></Image>
               </TouchableOpacity>
@@ -100,7 +92,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   buttonArea: {
-    flex: 1
+    backgroundColor: Color.nightDark,
+    width: '100%',
+    height: '100%',
+    alignItems: 'center',
+    justifyContent: 'center'
   },
   loginButton: {
     width: 195,
