@@ -2,7 +2,7 @@ import React from 'react';
 import { View, StyleSheet, Text, TouchableOpacity, TextInput } from 'react-native';
 import { Icon, Button } from 'react-native-elements';
 import SwitchToggle from 'react-native-switch-toggle';
-import { WebView } from 'react-native-webview';
+
 
 import { styles, ToogleStyles, MoreStyles, emailStyles } from './style';
 import Color from '../../Config/color';

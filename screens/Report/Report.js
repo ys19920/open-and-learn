@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, StyleSheet, Text, TouchableOpacity } from 'react-native';
 import { Icon } from 'react-native-elements';
-import { WebView } from 'react-native-webview';
+// import { WebView } from 'react-native-webview';
 
 import Color from '../../Config/color';
 class ReportScreen extends React.Component {
@@ -23,10 +23,10 @@ class ReportScreen extends React.Component {
         </View>
         <View style={styles.body}>
           <View style={{ width: '100%', height: '100%' }}>
-            <WebView
+            {/* <WebView
               source={{ uri: 'https://goaskmyclass.com/privacy-policy' }}
               style={{ marginTop: 20 }}
-            />
+            /> */}
           </View>
         </View>
       </View>
